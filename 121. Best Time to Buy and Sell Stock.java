@@ -6,15 +6,14 @@ Return the maximum profit you can achieve from this transaction. If you cannot a
 
 class Solution {
     public int maxProfit(int[] prices) {
-        int buyprice = Integer.MAX_VALUE;
+        int buyprice = Integer.MAX_VALUE; //track lowest buying price
         int maxprofit = 0;
         for (int i = 0; i < prices.length; i++) {
             int sellprice = prices[i];
+            //profit calculation
             if (buyprice < sellprice) {
-                int profit = sellprice - buyprice;
-                if (profit > maxprofit) {
-                    maxprofit = profit;
-                }
+                int profit = sellprice - buyprice; //today's profit
+                maxprofit=Math.max(maxprofit,profit); // maxmimum profit checking
             } else {
                 buyprice = sellprice;
             }
